@@ -58,3 +58,5 @@ https://wiki.ros.org/tf/Tutorials/Introduction%20to%20tf
 https://www.w3schools.com/python/ref_math_atan2.asp __used in tf_listener__
 
 https://wiki.ros.org/urdf/Tutorials
+
+https://www.youtube.com/watch?v=Eie-KoMQtxs
