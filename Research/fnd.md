@@ -110,6 +110,79 @@ CCD solves the problem through optimization , looping through the joints from en
 
 __Research more of this topic later__
 
+# Maths diving 
+
+## Spatial Transformation Matrices `Math and construction`
+
+### Concept
+any combination of translation,rotations and scaling can be  combined by a single 4x4 affine matrix
+where upper left 3x3 represents the rotation(i" and j" and k" values in this coordinates)
+,and the last  column represents a translation [a14 , a24, a34]
+![alt text](image-4.png)
+if this 4x4 matrix represents a coordinates , the first 3x3 represents the orientation , while the last column represents a vector or points in this space
+
+### last row
+to distinguish between points and vectors , points have a 1 in the 4th position of 4th column.
+while vectors have a 0 which removes the translation operation  - A vector doesn't care where it starts , what matters is its length and direction- therefore translation has no effect on it _useless_
+(the convention is that it starts from origin but not necessary)
+
+for an affine transformation matrix , the final row of the matrix is always 0 0 0 1
+
+## Types of Matrices [1blue3brown playlist is highly suggested]
+  1. Translation Matrix
+     by keeping the i" , j" , z" to their original values and inserting tx , ty , tz to represent the translation and 1 because you're moving this points along one or more coordinates
+    ![alt text](image-5.png)
+    ![alt text](image-6.png)
+
+  2. Scaling Matrix
+     by multiplying i" , j" , k" by constants to represent a new system where vectors are scaled by those vectors
+     ![alt text](image-7.png)
+
+  3. Rotation Matrix
+     Rotation about coordinates is specfied by the angle
+     ![alt text](image-8.png)
+     
+
+## Euler angles and Quaternions
+  Eular angles are a set of three angles that represent the orientations in space , Each angle represents a rotation around of the three orthogonal axes (x,y,z)(Roll,Yaw,Pitch) -> the order in which you apply the transformation to each angle surely matters
+
+### Gimbel Lock
+  To put it simply, when rotating around 3 axes you multiply 3 rotation matrices (e.g., yaw, pitch, roll).
+  
+  For some special values :
+    One of the matrices becomes redundant → the result is the same no matter its value.
+    Two of the matrices may align or cancel out, so they no longer represent two different rotations.
+    Or, two combined with the third produce the same effect as just one rotation.
+
+  > What all these cases have in common is that rotation is no longer happening around 3 independent axes. One or more transformations become redundant, reducing the degrees of freedom (DOF) from 3 down to 2.
+
+### Quaternions  
+  is a method to solve the Gimbel lock issue , they offer an alternative way to describe rotations.
+  They're similar to complex numbers with the an imaginary vector part and a real angel part
+  multiple rotations are done using only 1 operation around a unique imaginary axe, therefore doesn't go through the problems of gimble lock  
+  ![alt text](image-10.png)
+  ![alt text](image-9.png)
+
+## Concatenating Transformations
+  multiplying a point or a vector by multiple matrices will apply multiple transformations, those transformations can be sequentially __in order to debug results after every transformation__ or __if those mid_way results are needed__
+  but generally its preferable to first multiply all matrices together to produce a single matrix that contains all transformations , then apply it at once .
+  this manner is known as concatenation or composition of matrices
+  
+# ROS 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Appendix 
 - Robot Definitions  :
 
@@ -135,10 +208,9 @@ __Research more of this topic later__
 
 - Movement due to each wheel force
 ![alt text](image-3.png)
+
+- i" , j" , k" represenets the basis for a 3 coordinates system 
     
-
-
-
 
 # References
 `MIA Sessions`
@@ -149,9 +221,6 @@ https://www.youtube.com/watch?v=7q0E_Q8a6FM&list=PLBXdR4DulnPstl48cLbD9m6cuoJM05
 `transformation benefits`
 https://robotisim.com/how-robotics-depends-upon-transforms/
 
-`transformation types`
-https://www.cuemath.com/geometry/transformations/
-
 `Linear transformation`
 https://medium.com/@ebimsv/mastering-linear-algebra-part-4-understanding-linear-transformations-and-their-geometric-363235e0a700
 
@@ -160,3 +229,18 @@ https://www.rosroboticslearning.com/forward-kinematics
 
 `Reverse Kinematics`
 https://www.rosroboticslearning.com/inverse-kinematics
+
+`Transformation matrices`
+https://www.brainvoyager.com/bv/doc/UsersGuide/CoordsAndTransforms/SpatialTransformationMatrices.html
+
+https://www.cuemath.com/geometry/transformations/
+
+https://www.geeksforgeeks.org/maths/transformation-matrix/
+
+`Essence of linear algebra`
+https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab
+
+`Quaternions intuition` [i didn't understand clearly T-T]
+https://www.youtube.com/watch?v=d4EgbgTm0Bg
+https://www.youtube.com/watch?v=zjMuIxRvygQ
+https://eater.net/quaternions/video/intro
