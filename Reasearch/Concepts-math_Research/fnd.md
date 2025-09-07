@@ -166,22 +166,7 @@ for an affine transformation matrix , the final row of the matrix is always 0 0 
 ## Concatenating Transformations
   multiplying a point or a vector by multiple matrices will apply multiple transformations, those transformations can be sequentially __in order to debug results after every transformation__ or __if those mid_way results are needed__
   but generally its preferable to first multiply all matrices together to produce a single matrix that contains all transformations , then apply it at once .
-  this manner is known as concatenation or composition of matrices
-  
-# ROS 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  this manner is known as concatenation or composition of matrice
 
 # Appendix 
 - Robot Definitions  :
@@ -237,7 +222,7 @@ https://www.cuemath.com/geometry/transformations/
 
 https://www.geeksforgeeks.org/maths/transformation-matrix/
 
-`Essence of linear algebra`
+`Essence of linear algebra` [Escape if low on time]
 https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab
 
 `Quaternions intuition` [i didn't understand clearly T-T]
