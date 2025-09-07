@@ -1,9 +1,21 @@
 # Installation
-sudo apt-get install ros-noetic-ros-tutorials ros-noetic-geometry-tutorials ros-noetic-rviz ros-noetic-rosbash ros-noetic-rqt-tf-tree [should be installed already]
+`sudo apt-get install ros-noetic-ros-tutorials ros-noetic-geometry-tutorials ros-noetic-rviz ros-noetic-rosbash ros-noetic-rqt-tf-tree` [should be installed already]
 
---Run into a problem [process has died [pid 7525, exit code 127, cmd]] running turtle_tf--
-sudo apt update
-sudo apt install python-is-python3 
+__Run into a problem [process has died [pid 7525, exit code 127, cmd]] running turtle_tf__
+
+`sudo apt update`
+`sudo apt install python-is-python3` 
+
+`sudo apt-get install ros-noetic-urdf-tutorial`
+`sudo apt-get install ros-noetic-rviz`
+
+__--joint_state_publisher-- should exist , check using__
+`rospack list | grep joint_state_publisher`
+
+__should print__
+`joint_state_publisher /opt/ros/noetic/share/joint_state_publisher`
+`joint_state_publisher_gui /opt/ros/noetic/share/joint_state_publisher_gui`
+
 
 
 # tf
@@ -23,6 +35,13 @@ reporting the transform between two frames both translation and rotation
 to visualize tf frames , to show axes , joints and links
     `rosrun rviz rviz -d `rospack <package_name>` <rviz file inside the package path> `
 
+# URDF
+to run RViz with model and default settings
+`roslaunch urdf_tutorial <launchfile>.launch` 
+
+to pass the urdf as a parameter 
+`roslaunch urdf_tutorial <launchFile>.launch model:='$(find urdf_tutorial)/urdf/<file>.urdf'`
+__findurdf_tutorial is replaced with your package if its not it.
 
 
 
@@ -37,3 +56,5 @@ opends the dir of the package
 https://wiki.ros.org/tf/Tutorials/Introduction%20to%20tf
 
 https://www.w3schools.com/python/ref_math_atan2.asp __used in tf_listener__
+
+https://wiki.ros.org/urdf/Tutorials

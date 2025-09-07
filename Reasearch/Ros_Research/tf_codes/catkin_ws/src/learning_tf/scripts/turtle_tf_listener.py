@@ -23,7 +23,7 @@ if __name__ == '__main__' :
 
     while not rospy.is_shutdown():
         try :
-            (trans,rot) = listener.lookupTransform('/turtle2' , '/turtle1' , rospy.Time(0)) #target frame , source_frame , rospy.Time(0) takes the last common type between both
+            (trans,rot) = listener.lookupTransform('/turtle2' , '/carrot1' , rospy.Time(0)) #target frame , source_frame , rospy.Time(0) takes the last common type between both
                                                                                             #source is expressed -translated- to target
                                                                                             #returns (x,y,z)> how far they're for trans
                                                                                             #rot returns (qx , qy , qz , qw) encodes the orientation of the source frame relative to target
