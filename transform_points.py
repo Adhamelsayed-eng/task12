@@ -1,16 +1,8 @@
-#!/usr/bin/env python3
-"""
-Task 12.2: Transform your troops
-Ubuntu 20.04 + Python3
-"""
-
 import numpy as np
 import math
 import matplotlib.pyplot as plt
 
-# -------------------------
-# Utility functions
-# -------------------------
+
 def deg2rad(deg):
     return deg * math.pi / 180.0
 
@@ -68,9 +60,6 @@ def rotate_points_with_quaternion(points, q):
     v_rot = v + 2.0*cross2
     return v_rot
 
-# -------------------------
-# Transformation functions
-# -------------------------
 def transform_points_htm(points, tx, ty, tz, thetax, thetay, thetaz):
     R = rotation_matrix_from_euler_xyz(thetax, thetay, thetaz)
     t = np.array([tx, ty, tz])
@@ -82,9 +71,7 @@ def transform_points_quaternion(points, tx, ty, tz, thetax, thetay, thetaz):
     t = np.array([tx, ty, tz])
     return rotated + t
 
-# -------------------------
-# Main demo
-# -------------------------
+
 if __name__ == "__main__":
     # Example points
     points = np.array([
